@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        $users = User::factory(50)->create();
-//
-//        foreach ($users as $user){
-//            $subscribers = $users->random(rand(0,50))->pluck('id');
-//            $user->subscribers()->attach($subscribers);
-//        }
+        $users = User::factory(50)->create();
+
+        foreach ($users as $user){
+            $subscribers = $users->random(rand(0,50))->pluck('id');
+            $user->subscribers()->attach($subscribers);
+        }
         Twit::factory(1000)->create();
 
     }
