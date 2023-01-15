@@ -2,7 +2,7 @@
 @section('content')
     <div class="users">
         <div class="search_options">
-            <label class="option_caption">Подписчики {{$ownerUser->login}}</label>
+            <label class="option_caption">Подписки {{$ownerUser->login}}</label>
             <div>
                 <form method="get" onsubmit="{{route('subscribers.index','ownerUser','login')}}" style="position: relative">
                     <input type="text" name="login" class="search">
