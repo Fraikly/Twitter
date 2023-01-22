@@ -9,4 +9,13 @@ class Twit extends Model
 {
     protected $guarded = [];
     use HasFactory;
+    function images(){
+        return $this->hasMany(Image::class,'twit_id','id');
+    }
+    function likes(){
+        return $this->hasMany(LikesForTwit::class,'twit_id','id');
+    }
+    function comments(){
+        return $this->hasMany(Comment::class,'twit_id','id');
+    }
 }

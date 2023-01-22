@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class CreateController extends Controller
 {
 
-public function __invoke(User $user)
+public function __invoke()
 {
 $title="Новый твит";
-
-   return view('twits.create',compact('title'));
+    $user=User::find(Auth::user()->id);
+   return view('twits.create',compact('title','user'));
 }
 
 }

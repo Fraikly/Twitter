@@ -27,5 +27,6 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <script type="text/javascript" src="{{resource_path()."/js/jquery.js"}}"></script>
 </head>
 @yield('body')

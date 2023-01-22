@@ -1,6 +1,7 @@
 @extends('layouts.header')
 
 @section('content')
-    <p>Вы не авторизированы</p>
-
+    <div class="users">
+    <p class="welcome_quot">Вы не авторизированы</p>
+    </div>
             @endsection

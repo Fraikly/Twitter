@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreign('user_id','twit_user_fk')->on('users')->references('id');
 
             $table->string("text",400);
-            $table->string("photos")->nullable();
             $table->boolean("retwit")->default(false);
 
             $table->unsignedBigInteger("original_twit")->nullable();

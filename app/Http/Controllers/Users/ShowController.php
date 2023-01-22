@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShowController extends Controller
 {
@@ -32,7 +33,6 @@ class ShowController extends Controller
         $title = $user->login;
         $subscriptions = $user->subscriptions()->count();
         $subscribers = $user->subscribers()->count();
-
         return view('users.show', compact('user', 'title', 'subscriptions', 'subscribers', 'twits','months','twitsCount'));
     }
 }

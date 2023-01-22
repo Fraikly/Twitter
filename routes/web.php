@@ -47,6 +47,34 @@ Route::group(['namespace' => 'App\Http\Controllers\Twits', 'prefix' => '/twits',
     Route::get('/{twit}/edit', 'EditController')->name('twits.edit');
     Route::patch('/{twit}/update', 'UpdateController')->name('twits.update');
     Route::delete('/{twit}/delete', 'DestroyController')->name('twits.delete');
+
+    Route::group(['namespace' => 'Likes', 'prefix' => '/{twit}/likes','middleware'=>'auth'], function () {
+        Route::post('/store', 'StoreController')->name('likes.store');
+        Route::delete('/delete', 'DestroyController')->name('likes.delete');
+    });
+
+    Route::group(['namespace' => 'Comments', 'prefix' => '/{twit}/comments','middleware'=>'auth'], function () {
+        Route::post('/store', 'StoreController')->name('comments.store');
+        Route::get('', 'IndexController')->name('comments.index');
+        Route::delete('/{comment}/delete', 'DestroyController')->name('comments.delete');
+        Route::get('/{comment}/edit', 'EditController')->name('comments.edit');
+        Route::patch('/{comment}/update', 'UpdateController')->name('comments.update');
+
+        Route::group(['namespace' => 'Likes', 'prefix' => '/{comment}/likes'], function () {
+            Route::post('/store', 'StoreController')->name('comment.likes.store');
+            Route::delete('/delete', 'DestroyController')->name('comment.likes.delete');
+        });
+
+        Route::group(['namespace' => 'ReComments', 'prefix' => '/{comment}/recomments'], function () {
+            Route::get('/create', 'CreateController')->name('recomments.create');
+            Route::post('/store', 'StoreController')->name('recomments.store');
+        });
+    });
+
+    Route::group(['namespace' => 'Retwits', 'prefix' => '/{twit}/retwits'], function () {
+        Route::get('/create', 'CreateController')->name('retwits.create');
+        Route::post('/store', 'StoreController')->name('retwits.store');
+    });
 });
 
 

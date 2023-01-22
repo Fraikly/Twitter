@@ -14,11 +14,16 @@ public function __invoke(User $user,UpdateRequest $request)
 {
     $this->authorize('view',$user);
     $data=$request->validated();
-    if(!isset($data["picture"])){
-        unset($data["picture"]);
+
+    if($request->hasFile('picture')){
+        if($user->picture!="icons/user.png")
+        unlink(public_path()."/storage/". $user->picture);
+
+        $paths = $data["picture"]->store('icons','public');
+        $data["picture"]=$paths;
     }
-    else
-        $data["picture"]="img\\".$data["picture"];
+
+
     $user->update($data);
     return redirect()->route('users.show',$user->id);
 

@@ -14,7 +14,7 @@
                     <div class="content_part">
                         <label class="part_header">ВХОД В АККАУНТ</label>
                         <input id="email" type="email" name="email" value="{{ old('email') }}" required
-                               autocomplete="email" autofocus>
+                               autocomplete="email" autofocus placeholder="Введите вашу почту">
                         @error('email')
 
                                         <strong>{{ $message }}</strong>
@@ -23,7 +23,7 @@
 
 
                         <input id="password" type="password" name="password"
-                               required autocomplete="current-password">
+                               required autocomplete="current-password" placeholder="Введите ваш пароль">
 
                         @error('password')
 

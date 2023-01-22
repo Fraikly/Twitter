@@ -15,6 +15,7 @@ public function __invoke(Twit $twit)
 {
     $this->authorize('view',User::find($twit->user_id));
     $title="Редактирование твита";
-    return view('twits.edit',compact('title','twit'));
+    $user=User::find(Auth::user()->id);
+    return view('twits.edit',compact('title','twit','user'));
 }
 }

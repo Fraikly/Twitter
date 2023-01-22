@@ -56,4 +56,10 @@ class User extends Authenticatable
     function twits(){
          return $this->hasMany(Twit::class,'user_id','id');
     }
+    function likesForTwit(){
+        return $this->hasMany(LikesForTwit::class,'user_id','id');
+    }
+    function likesForComment(){
+        return $this->hasMany(LikesForComment::class,'user_id','id');
+    }
 }

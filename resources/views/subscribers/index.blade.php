@@ -19,7 +19,7 @@
 
             @foreach($users as $user)
                 <div class="profiles_info">
-                <img src="{{URL::to('/')}}\{{$user->picture}}" class="profiles_photo">
+                <img src="{{asset('/storage/' .$user->picture)}}" class="profiles_photo">
                     <p>   <a href="{{route('users.show', $user->id)}}"  class="profiles_name">{{ $user->login }} </a></p>
                     @auth()
                 @if($ownerUser->id === \Illuminate\Support\Facades\Auth::user()->getAuthIdentifier())

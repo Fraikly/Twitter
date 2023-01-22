@@ -8,7 +8,7 @@
     gap: 80px;
     position: absolute;
     width: 98%;
-    height: 170%;
+    /* height: 170%; */
 }
 
 .headers {
@@ -20,7 +20,7 @@
     width: 100%;
     order: 0;
     flex-grow: 0;
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 .main_header {
@@ -42,7 +42,7 @@
     font-style: normal;
     font-weight: 800;
     font-size: 12px;
-    line-height: 20px;
+    /* line-height: 20px; */
     color: rgba(0, 0, 0, 0.31);
     flex: none;
     order: 1;
@@ -54,8 +54,8 @@
     flex-direction: column;
     align-items: center;
     padding: 0px;
-    width: 50%;
-    height: 50%;
+    width: 45%;
+    height: 35%;
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -63,10 +63,11 @@
 }
 
 .main_part {
+    margin-bottom: 10%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 13% 12%;
+    padding: 7% 9%;
     gap: 10px;
     width: 100%;
     background: #FFFFFF;
@@ -327,6 +328,8 @@ a{
     max-width: 189.44px;
     /* width: 74%; */
     /* margin: 2%; */
+    max-height: 189.44px;
+    object-fit: cover;
 }
 .profiles_name{
     height: 21px;
@@ -493,12 +496,14 @@ a{
 }
 .twit{
     width: 100%;
-    border: 3px solid #0052cc42;
-    border-radius: 25px;
+    border-bottom: 3px solid #9f9d9d4a;
+    /* border: 3px solid #0052cc42; */
+    /* border-radius: 25px; */
     margin-bottom: 33px;
-    padding: 22px;
+    /* padding: 22px; */
 }
 .twit_profile_photo{
+    /* position: absolute; */
     width: 70px;
     height: 70px;
     border-radius: 36px;
@@ -507,12 +512,12 @@ a{
     /* position: absolute; */
     font-family: 'Montserrat';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 18px;
     /* line-height: 37px; */
     color: black;
     text-decoration: none;
-    margin-left: 1%;
+    /* margin-left: 1%; */
     margin-top: 1%;
 }
 .twit_date{
@@ -529,18 +534,20 @@ a{
 .twit_header{
     width: 50%;
     position: absolute;
-    margin-top: 26px;
+    /* margin-top: 26px; */
+    margin-left: 10px;
 }
 .twit_content{
+    width: 86%;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     /* line-height: 37px; */
-    color: #595959c2;
+    color: black;
     text-decoration: none;
-    margin-left: 1%;
-    margin-top: 1%;
+    margin-left: 82px;
+    margin-top: -56px;
 }
 .twits.welcome_twits{
     margin-top: 74px;
@@ -548,11 +555,242 @@ a{
 .welcome_quot{
     margin-bottom:20px ;
     position: absolute;
-   text-align: center;
+    text-align: center;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 20px;
     color: #0052CC;
+}
+.likes{
+
+}
+.likes_count{
+    color: #595959c2;
+    position: relative;
+    bottom: 6px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    margin-right: 17px;
+}
+.edit_twit_icons{
+    position: absolute;
+    right: -35%;
+    top: 0;
+}
+.likes_button{
+    padding: 0;
+    margin: 0;
+    width: 28px;
+    box-shadow: none;
+    background: none;
+}
+.user_picture{
+    /* width: 30px; */
+    position: absolute;
+    left: 0;
+    margin-top: 5%;
+    margin-left: 2%;
+}
+.profile_options{
+    width: 39%;
+    /* margin-left: 200px; */
+    position: absolute;
+    /* top: 101px; */
+    margin-top: 3%;
+}
+.settings{
+    /* margin-bottom: 3%; */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    /* line-height: 24px; */
+    color: rgba(0, 0, 0, 0.4);
+}
+.profile_options input{
+    box-shadow: none;
+    border: none;
+    /* height: 29%; */
+    padding: 1%;
+    width: 50%;
+    margin-left: 3%;
+    margin-bottom: 3%;
+    background: none;
+}
+.about{
+    border-color: rgba(0, 0, 0, 0.4);
+    height: 73px;
+    width: 100%;
+    margin: 2%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: black;
+}
+.custom-file-upload {
+    margin-bottom: 3%;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    cursor: pointer;
+    /* display: flex; */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /* width: 80%; */
+    /* height: 54px; */
+    background: #0052CC;
+    /* box-shadow: 0px 0px 7px rgb(0 0 0 / 25%); */
+    border-radius: 4px;
+    flex: none;
+    align-self: stretch;
+    flex-grow: 0;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    /* line-height: 27px; */
+    color: #FFFFFF;
+    flex: none;
+    /* order: 0; */
+    flex-grow: 0;
+    /* margin-left: 10%; */
+    /* margin-bottom: 2%; */
+}
+input[type="file"] {
+    display: none;
+}
+.profile_options button{
+    margin-left: 0;
+    width: 100%;
+}
+.right{
+    position: absolute;
+    right: 40px;
+}
+.twit_text{
+    min-height: 26px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+    padding: 1%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+}
+.checkbox_title{
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.4);
+}
+input[type="checkbox"] {
+    width: 2%;
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 1%;
+    margin-top: 1%;
+    margin-right: 1%;
+}
+.other{
+    width: 51%;
+    /* margin-top: 21%; */
+    left: -24%;
+    position: relative;
+}
+.centered_div {
+    background: #000000cc; width: 100%;height:100%;display: none; justify-content: center;z-index: 4;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+}
+.comment_profile_photo{
+    /* position: absolute; */
+    width: 50px;
+    height: 50px;
+    border-radius: 36px;
+    margin-left: 82px;
+    margin-top: 6px;
+}
+.comments_text{
+    padding: 15px;
+    /* height: 45px; */
+    /* position: absolute; */
+    /* margin-bottom: -3px; */
+    border: 2px solid #9f9d9d4a;
+    background: none;
+    box-shadow: none;
+    margin: 0;
+    /* padding: 1%; */
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.4);
+    width: 51%;
+    margin-top: 26px;
+    /* margin-bottom: -57px; */
+    width: 69%;
+}
+.comments_name{
+    cursor: pointer;
+    width: 30%;
+    position: absolute;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    /* line-height: 37px; */
+    color: black;
+    text-decoration: none;
+    margin-top: 6px;
+    margin-left: 6px;
+}
+.create_comments{position: relative;right: 2%;/* height: 20%; *//* margin-left: 72%; */top: 6%;/* right: 27%; *//* position: absolute; */height: 45px;box-shadow: none;/* margin: 0; */margin-bottom: 3%;border: none;display: inline-block;padding: 6px 12px;cursor: pointer;cursor: pointer;/* display: flex; */flex-direction: row;justify-content: center;align-items: center;gap: 10px;/* width: 80%; *//* height: 54px; */background: rgb(218 218 218);/* box-shadow: 0px 0px 7px rgb(0 0 0 / 25%); */border-radius: 4px;flex: none;align-self: stretch;flex-grow: 0;font-family: 'Open Sans';font-style: normal;font-weight: 600;font-size: 18px;/* line-height: 27px; */color: #FFFFFF;flex: none;/* order: 0; */flex-grow: 0;margin-left: 3%;/* margin-bottom: 2%; */width: 59px;}
+.comment_text{
+    /* margin-top: -2.7%; */
+    margin-top: -34px;
+    display: block;
+    width: 69%;
+    /* margin-left: 30%; */
+    margin-bottom: 0%;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(0, 0, 0, 0.4);
+    margin-left: 138px;
+}
+.comment_edit{
+    position: absolute;
+    right: 24%;
+}
+.comment{
+    margin-bottom: 19px;
+    padding-bottom: 22px;
+    border-bottom: 3px solid #9f9d9d1f;
+    /* width: 85%; */
+    /* margin-left: 0%; */
 }

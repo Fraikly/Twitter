@@ -19,7 +19,7 @@ class TwitFactory extends Factory
     {
         return [
             'user_id'=>User::get()->random()->id,
-            'text'=>fake()->text(200)
+            'text'=>fake()->text(300)
         ];
     }
 }

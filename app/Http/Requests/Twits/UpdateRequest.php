@@ -26,6 +26,7 @@ class UpdateRequest extends FormRequest
         return [
             'text'=>'string|max:400|required',
             'photos'=>'',
+            'old_photo'=>'',
         ];
     }
 }
