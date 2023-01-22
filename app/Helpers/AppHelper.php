@@ -37,6 +37,7 @@ class AppHelper
     static function deletePhotosFromTwit(Twit $twit)
     {
         foreach ($twit->images()->get() as $photo) {
+            if(file_exists(public_path() . "/storage/" . $photo->patch))
             unlink(public_path() . "/storage/" . $photo->patch);
         }
     }
@@ -51,7 +52,6 @@ class AppHelper
             self::deleteTwit($retwit);
         }
 
-//        Twit::where(['original_twit'=>$twit->id])->delete();
         Twit::where('id',$twit->id)->delete();
 
 
@@ -63,12 +63,17 @@ class AppHelper
         }
         Comment::where(['twit_id'=>$twit->id])->delete();
 
+
     }
     static function deleteComment(Comment $comment){
 
             LikesForComment::where(['comment_id'=>$comment->id])->delete();
             self::deleteAnswerForComments($comment);
-            Comment::find($comment->id)->deleteOrFail();
+            $mustDelete= Comment::find($comment->id);
+                if($mustDelete!=null){
+                    $mustDelete->delete();
+                }
+
 
     }
 

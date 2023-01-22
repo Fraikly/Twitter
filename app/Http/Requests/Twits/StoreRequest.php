@@ -27,7 +27,6 @@ class StoreRequest extends FormRequest
         return [
            'text'=>'string|max:400|required',
             'photos'=>'',
-
         ];
     }
 }

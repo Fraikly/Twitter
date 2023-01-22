@@ -41,6 +41,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Users', 'prefix' => '/users']
 
 
 });
+
+
 Route::group(['namespace' => 'App\Http\Controllers\Twits', 'prefix' => '/twits','middleware'=>'auth'], function () {
     Route::get('/create', 'CreateController')->name('twits.create');
     Route::post('/store', 'StoreController')->name('twits.store');

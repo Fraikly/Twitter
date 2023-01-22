@@ -16,7 +16,6 @@ public function __invoke(User $user)
         'subscriber_id'=>Auth::user()->getAuthIdentifier(),
         'subscription_id'=>$user->id
     ]);
-//    return redirect()->route('users.show',$user->id);
     return redirect()->back();
 }
 

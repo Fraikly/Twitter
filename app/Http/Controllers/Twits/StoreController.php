@@ -13,33 +13,32 @@ use Illuminate\Support\Facades\Auth;
 class StoreController extends Controller
 {
 
-public function __invoke(StoreRequest $request)
-{
+    public function __invoke(StoreRequest $request)
+    {
+
+        $data = $request->validated();
+
+        $data['user_id'] = Auth::user()->getAuthIdentifier();
+
+        $paths = [];
+        if ($request->hasFile('photos')) {
+            foreach ($data["photos"] as $photo) {
+                $paths[] = $photo->store('photos', 'public');
+            }
+            unset($data["photos"]);
+        }
 
 
-    $data=$request->validated();
+        $twit = Twit::create($data);
 
-    $data['user_id']=Auth::user()->getAuthIdentifier();
+        foreach ($paths as $path) {
+            Image::create([
+                'twit_id' => $twit->id,
+                'patch' => $path
+            ]);
+        }
 
-    $paths=[];
-if($request->hasFile('photos')){
-    foreach ( $data["photos"] as $photo){
-        $paths[] = $photo->store('photos','public');
+        return redirect()->route('users.show', $data['user_id']);
     }
-    unset( $data["photos"]);
-}
-
-
-  $twit = Twit::create($data);
-
-foreach ($paths as $path){
-    Image::create([
-        'twit_id'=>$twit->id,
-        'patch'=>$path
-    ]);
-}
-
-    return redirect()->route('users.show',$data['user_id']);
-}
 
 }

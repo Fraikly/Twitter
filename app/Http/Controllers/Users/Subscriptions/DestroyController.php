@@ -12,6 +12,7 @@ class DestroyController extends Controller
 
 public function __invoke(User $user)
 {
+
     SubscriberSubscription::where([
         'subscriber_id'=>$user->id,
         'subscription_id'=>Auth::user()->getAuthIdentifier()
