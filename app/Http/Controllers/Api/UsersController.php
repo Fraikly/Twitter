@@ -7,13 +7,11 @@ use App\Helpers\AppHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\UserFilter;
 use App\Http\Requests\FilterRequest;
-use App\Http\Requests\Users\UpdateRequest;
 use App\Http\Resources\Twit\TwitResource;
 use App\Http\Resources\User\UserInfoResource;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {

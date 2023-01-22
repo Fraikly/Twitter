@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Twits;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Twits\StoreRequest;
 use App\Models\Image;
-use App\Models\SubscriberSubscription;
 use App\Models\Twit;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class StoreController extends Controller

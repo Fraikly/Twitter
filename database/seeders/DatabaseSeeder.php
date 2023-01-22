@@ -22,45 +22,54 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        $users = User::factory(100)->create();
-//
-//        $icons = Storage::files('public/icons');
-//
-//        if(count($icons)>0)
-//        foreach ($users as $user){
-//            $user->update([
-//                'picture'=>explode('public/',$icons[rand(0, count($icons) - 1)])[1],
-//            ]);
-//            $subscribers = $users->random(rand(0,50))->pluck('id');
-//            $user->subscribers()->attach($subscribers);
-//        }
-//        $twits = Twit::factory(500)->create();
-//
-//        for ($i = 0; $i < count($twits); $i += rand(1, 20)) {
-//            for ($j = 0; $j < rand(1, 5); $j++)
-//                Twit::create([
-//                    'user_id' => User::get()->random()->id,
-//                    'text' => fake()->text(200),
-//                    'retwit'=>1,
-//                    'original_twit'=>Twit::get()->random()->id,
-//                ]);
-//        }
-//
-//        LikesForTwit::factory(10000)->create();
+        $NumberOfUsers = 100;
+        $NumberOfTwits = 300;
+        $NumberOfComments = 300;
+        $NumberOfLikesForTwits = 10000;
+        $NumberOfLikesForComments = 5000;
+
+        $MaxNumberOfSubscribers = 50;
+        $MinNumberOfSubscribers = 0;
+
+        $users = User::factory($NumberOfUsers)->create();
+        $icons = Storage::files('public/icons');
+        if (count($icons) > 0)
+            foreach ($users as $user) {
+                $user->update([
+                    'picture' => explode('public/', $icons[rand(0, count($icons) - 1)])[1],
+                ]);
+                $subscribers = $users->random(rand($MinNumberOfSubscribers, $MaxNumberOfSubscribers))->pluck('id');
+                $user->subscribers()->attach($subscribers);
+            }
+
+        $twits = Twit::factory($NumberOfTwits)->create();
+
+        for ($i = 0; $i < count($twits); $i += rand(1, 20)) {
+            for ($j = 0; $j < rand(1, 5); $j++)
+                Twit::create([
+                    'user_id' => User::get()->random()->id,
+                    'text' => fake()->text(200),
+                    'retwit' => 1,
+                    'original_twit' => Twit::get()->random()->id,
+                ]);
+        }
+
+        LikesForTwit::factory($NumberOfLikesForTwits)->create();
         $photos = Storage::files('public/photos');
 
-        if(count($photos)>0)
-            foreach (Twit::all()as $twit){
-                for ($i=0;$i<rand(0,3);$i++){
+        if (count($photos) > 0)
+            foreach (Twit::all() as $twit) {
+                for ($i = 0; $i < rand(0, 3); $i++) {
                     Image::create([
-                        'twit_id'=>$twit->id,
-                        'patch'=>explode('public/',$photos[rand(0, count($photos) - 1)])[1],
+                        'twit_id' => $twit->id,
+                        'patch' => explode('public/', $photos[rand(0, count($photos) - 1)])[1],
                     ]);
                 }
             }
 
 
-        $comments = Comment::factory(1000)->create();
+        $comments = Comment::factory($NumberOfComments)->create();
+
         for ($i = 0; $i < count($comments); $i += rand(1, 5)) {
             for ($j = 0; $j < rand(1, 10); $j++)
                 Comment::create([
@@ -71,6 +80,6 @@ class DatabaseSeeder extends Seeder
                     'comment_id' => $comments[$i]->id,
                 ]);
         }
-        LikesForComment::factory(5000)->create();
+        LikesForComment::factory($NumberOfLikesForComments)->create();
     }
 }

@@ -8,7 +8,7 @@
             <a href="{{ route('users.index') }}">Пользователи</a>
 
 
-                @guest
+            @guest
                 <label class="authorization_navigation">
                     @if (Route::has('login'))
                         <a href="{{ route('login') }}">Вход</a>
@@ -17,31 +17,29 @@
                         <a href="{{ route('register') }}">Регистрация</a>
                     @endif
                 </label>
-                @else
+            @else
 
-
-
-        <label class="profile_navigation">
-            <a href="{{route('users.show', Auth::user()->id)}}">
-                {{ Auth::user()->login }}
-            </a>
-            <div class="dropdown">
-                v
-                <div class="dropdown-content">
-                    <a href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                        Выйти
+                <label class="profile_navigation">
+                    <a href="{{route('users.show', Auth::user()->id)}}">
+                        {{ Auth::user()->login }}
                     </a>
+                    <div class="dropdown">
+                        v
+                        <div class="dropdown-content">
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                Выйти
+                            </a>
 
-                </div>
-            </div>
-            </label>
+                        </div>
+                    </div>
+                </label>
 
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             @endguest
         </div>
     </header>

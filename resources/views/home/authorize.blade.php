@@ -31,7 +31,7 @@
                                 </div>
                             @else
                                 @include('layouts.retwit')
-                                @endif
+                            @endif
                         </div>
                         @include('comments.create')
                     @endforeach

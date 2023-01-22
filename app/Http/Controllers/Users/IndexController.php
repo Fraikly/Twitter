@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\UserFilter;
 use App\Http\Requests\FilterRequest;
-use App\Http\Resources\User\UserResource;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
@@ -25,11 +23,11 @@ class IndexController extends Controller
             $users = User::paginate(20);
 
         }
-        $subscriptions=null;
-        if(Auth::check())
-        $subscriptions=Auth::user()->subscriptions;
+        $subscriptions = null;
+        if (Auth::check())
+            $subscriptions = Auth::user()->subscriptions;
         $title = "Пользователи";
 
-        return view('users.index', compact('users', 'title','subscriptions'));
+        return view('users.index', compact('users', 'title', 'subscriptions'));
     }
 }

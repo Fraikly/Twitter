@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class DestroyController extends Controller
 {
 
-public function __invoke(User $user)
-{
+    public function __invoke(User $user)
+    {
 
-    SubscriberSubscription::where([
-        'subscriber_id'=>$user->id,
-        'subscription_id'=>Auth::user()->getAuthIdentifier()
-    ])->delete();
+        SubscriberSubscription::where([
+            'subscriber_id' => $user->id,
+            'subscription_id' => Auth::user()->getAuthIdentifier()
+        ])->delete();
 
- return redirect()->back();
-}
+        return redirect()->back();
+    }
 }

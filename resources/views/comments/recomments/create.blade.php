@@ -10,7 +10,8 @@
                             <a href="{{route('comments.edit',[$twit->id, $comment->id])}}"> <img
                                     src="{{URL::to('/')}}\img\for_interface\edit_twit.png"
                                     width="24px" alt="missing image"></a>
-                            <form method="post" action="{{route('comments.delete',[$twit->id, $comment->id])}}" onclick="return confirm('Вы уверены, что хотите удалить комментарий?');">
+                            <form method="post" action="{{route('comments.delete',[$twit->id, $comment->id])}}"
+                                  onclick="return confirm('Вы уверены, что хотите удалить комментарий?');">
                                 @csrf
                                 @method('delete')
                                 <input type="image" src="\img\for_interface\delete_twit.png" alt="Submit"
@@ -18,8 +19,9 @@
                             </form>
                         </div>
                     @endif
-                    <a href="{{route('users.show',$comment->user_id)}}">  <img src="{{asset('/storage/' .\App\Models\User::find($comment->user_id)->picture)}}"
-                                                                               class="comment_profile_photo">
+                    <a href="{{route('users.show',$comment->user_id)}}"> <img
+                            src="{{asset('/storage/' .\App\Models\User::find($comment->user_id)->picture)}}"
+                            class="comment_profile_photo">
                         <label class="comments_name">{{\App\Models\User::find($comment->user_id)->login}}
                             <label class="twit_date">
                                 @if((date('Y-m-d')===date('Y-m-d',strtotime($comment->created_at))))
@@ -44,25 +46,25 @@
                     <label class="comment_text">{{$comment->text}}</label>
 
 
-
                     <div class="likes" style="position: absolute;
     right: 32%;">
 
                         @if( !\Illuminate\Support\Facades\Auth::check() or \App\Models\User::find(\Illuminate\Support\Facades\Auth::user()->id)->likesForComment()->where('comment_id',$comment->id)->get()->isEmpty())
 
-                            <input type="image" src="{{URL::to('/')}}\img\for_interface\no_like_twit.png" style="width: 24px" alt="Submit" class="likes_button">
-
-
+                            <input type="image" src="{{URL::to('/')}}\img\for_interface\no_like_twit.png"
+                                   style="width: 24px" alt="Submit" class="likes_button">
 
                         @else
 
-                            <input type="image" src="{{URL::to('/')}}\img\for_interface\like_twit.png" style="width: 24px" alt="Submit" class="likes_button">
+                            <input type="image" src="{{URL::to('/')}}\img\for_interface\like_twit.png"
+                                   style="width: 24px" alt="Submit" class="likes_button">
 
                         @endif
 
                         <label class="likes_count"> {{$comment->likes()->count()}}</label>
 
-                        <input type="image" src="{{URL::to('/')}}\img\for_interface\answer.png" style="width: 24px" alt="Submit" class="likes_button">
+                        <input type="image" src="{{URL::to('/')}}\img\for_interface\answer.png" style="width: 24px"
+                               alt="Submit" class="likes_button">
 
                     </div>
                 </div>
@@ -73,9 +75,11 @@
 
                     <p style="margin: 0;margin-bottom: 15px;">
                         @if(\Illuminate\Support\Facades\Auth::check())
-                            <img src="{{asset('/storage/' .\App\Models\User::find(\Illuminate\Support\Facades\Auth::user()->id)->picture)}}"
-                                 class="comment_profile_photo">
-                            <label class="comments_name">{{\App\Models\User::find(\Illuminate\Support\Facades\Auth::user()->id)->login}}
+                            <img
+                                src="{{asset('/storage/' .\App\Models\User::find(\Illuminate\Support\Facades\Auth::user()->id)->picture)}}"
+                                class="comment_profile_photo">
+                            <label
+                                class="comments_name">{{\App\Models\User::find(\Illuminate\Support\Facades\Auth::user()->id)->login}}
                                 @else
                                     <img src="{{asset('/storage/icons/user.png')}}"
                                          class="comment_profile_photo">
@@ -84,14 +88,15 @@
                                     </label>
 
                                     @csrf
-                                    <input type="text" name="text" class="comments_text" placeholder="Добавить комментарий" required style="width: 51%;">
+                                    <input type="text" name="text" class="comments_text"
+                                           placeholder="Добавить комментарий" required style="width: 51%;">
                                     <button type="submit" class="create_comments" name="is_answer" value="1">ок</button>
                                     @error('text')
-                                    <center>  <strong>{{$message}}</strong></center>
+                                    <center><strong>{{$message}}</strong></center>
                             @enderror
                     </p>
                 </form>
             </div>
         </div>
-        </div>
+    </div>
 @endsection

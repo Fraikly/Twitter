@@ -45,19 +45,25 @@
                         <div class="twit" style="    border: 3px solid #9f9d9d4a;
     padding: 20px;
     width: 90%;    margin-top: 20px;">
-                            <a  style="cursor: pointer" href="{{route('users.show',\App\Models\User::find(\App\Models\Twit::find($twit->original_twit)->user_id)->id)}}">
-                                <img src="{{asset('/storage/' .\App\Models\User::find(\App\Models\Twit::find($twit->original_twit)->user_id)->picture)}}" class="twit_profile_photo"
-                                     alt="missing image">
+                            <a style="cursor: pointer"
+                               href="{{route('users.show',\App\Models\User::find(\App\Models\Twit::find($twit->original_twit)->user_id)->id)}}">
+                                <img
+                                    src="{{asset('/storage/' .\App\Models\User::find(\App\Models\Twit::find($twit->original_twit)->user_id)->picture)}}"
+                                    class="twit_profile_photo"
+                                    alt="missing image">
                                 <div class="twit_info" style="display: contents">
 
-                                    <label class="twit_header"> <label class="twit_name">{{\App\Models\User::find(\App\Models\Twit::find($twit->original_twit)->user_id)->login}}
+                                    <label class="twit_header"> <label
+                                            class="twit_name">{{\App\Models\User::find(\App\Models\Twit::find($twit->original_twit)->user_id)->login}}
                                         </label>
                                         <label class="twit_date">
                                             @if((date('Y-m-d')===date('Y-m-d',strtotime(\App\Models\Twit::find($twit->original_twit)->created_at))))
-                                                сегодня в {{date('H:i',strtotime(\App\Models\Twit::find($twit->original_twit)->created_at))}}
+                                                сегодня
+                                                в {{date('H:i',strtotime(\App\Models\Twit::find($twit->original_twit)->created_at))}}
 
                                             @elseif(date('Y-m-d',strtotime("-1 days"))===date('Y-m-d',strtotime(\App\Models\Twit::find($twit->original_twit)->created_at)))
-                                                вчера в {{date('H:i',strtotime(\App\Models\Twit::find($twit->original_twit)->created_at))}}
+                                                вчера
+                                                в {{date('H:i',strtotime(\App\Models\Twit::find($twit->original_twit)->created_at))}}
 
                                             @elseif(date('Y')===date('Y',strtotime(\App\Models\Twit::find($twit->original_twit)->created_at)))
                                                 {{date("H:i - d {$months[date('M',strtotime(\App\Models\Twit::find($twit->original_twit)->created_at))]} ",strtotime(\App\Models\Twit::find($twit->original_twit)->created_at))}}
@@ -87,27 +93,34 @@
 
                                 @if( !\Illuminate\Support\Facades\Auth::check() or \App\Models\User::find(\Illuminate\Support\Facades\Auth::user()->id)->likesForTwit()->where('twit_id',\App\Models\Twit::find($twit->original_twit)->id)->get()->isEmpty())
 
-                                        <p><input type="image" src="{{URL::to('/')}}\img\for_interface\no_like_twit.png" style="width: 28px"
-                                                  alt="Submit" class="likes_button">
+                                    <p><input type="image" src="{{URL::to('/')}}\img\for_interface\no_like_twit.png"
+                                              style="width: 28px"
+                                              alt="Submit" class="likes_button">
 
 
                                 @else
 
-                                        <p><input type="image" src="{{URL::to('/')}}\img\for_interface\like_twit.png" style="width: 28px"
-                                                  alt="Submit" class="likes_button">
+                                    <p><input type="image" src="{{URL::to('/')}}\img\for_interface\like_twit.png"
+                                              style="width: 28px"
+                                              alt="Submit" class="likes_button">
 
-                                @endif
+                                        @endif
 
-                                <label class="likes_count"> {{\App\Models\Twit::find($twit->original_twit)->likes()->count()}}</label>
+                                        <label
+                                            class="likes_count"> {{\App\Models\Twit::find($twit->original_twit)->likes()->count()}}</label>
 
-                                    <input type="image" src="{{URL::to('/')}}\img\for_interface\comments.png" style="width: 28px" alt="Submit"
-                                           class="likes_button">
-                                    <label class="likes_count">   {{\App\Models\Twit::find($twit->original_twit)->comments()->count()}}</label>
+                                        <input type="image" src="{{URL::to('/')}}\img\for_interface\comments.png"
+                                               style="width: 28px" alt="Submit"
+                                               class="likes_button">
+                                        <label
+                                            class="likes_count">   {{\App\Models\Twit::find($twit->original_twit)->comments()->count()}}</label>
 
 
-                                    <input type="image" src="{{URL::to('/')}}\img\for_interface\retwit.png" style="width: 28px" alt="Submit"
-                                           class="likes_button">
-                                    <label class="likes_count"> {{\App\Models\Twit::where('original_twit',\App\Models\Twit::find($twit->original_twit)->id)->count()}}</label>
+                                        <input type="image" src="{{URL::to('/')}}\img\for_interface\retwit.png"
+                                               style="width: 28px" alt="Submit"
+                                               class="likes_button">
+                                        <label
+                                            class="likes_count"> {{\App\Models\Twit::where('original_twit',\App\Models\Twit::find($twit->original_twit)->id)->count()}}</label>
                             </div>
                             <div id="show" class="centered_div">
                                 <center>
@@ -117,52 +130,53 @@
                         </div>
             </div>
             @endif
-                    <div class="likes">
+            <div class="likes">
 
 
-                        @if( !\Illuminate\Support\Facades\Auth::check() or \App\Models\User::find(\Illuminate\Support\Facades\Auth::user()->id)->likesForTwit()->where('twit_id',$twit->id)->get()->isEmpty())
-                            <p><img src="{{URL::to('/')}}\img\for_interface\no_like_twit.png"
-                                      style="width: 28px" class="likes_button">
-                        @else
-                            <p><img src="{{URL::to('/')}}\img\for_interface\like_twit.png"
-                                      style="width: 28px"  class="likes_button">
-                                @endif
+                @if( !\Illuminate\Support\Facades\Auth::check() or \App\Models\User::find(\Illuminate\Support\Facades\Auth::user()->id)->likesForTwit()->where('twit_id',$twit->id)->get()->isEmpty())
+                    <p><img src="{{URL::to('/')}}\img\for_interface\no_like_twit.png"
+                            style="width: 28px" class="likes_button">
+                @else
+                    <p><img src="{{URL::to('/')}}\img\for_interface\like_twit.png"
+                            style="width: 28px" class="likes_button">
+                        @endif
 
-                                <label class="likes_count"> {{$twit->likes()->count()}}</label>
-                                <img src="{{URL::to('/')}}\img\for_interface\comments.png"
-                                       style="width: 28px"
-                                       class="likes_button">
-                                <label class="likes_count">{{$twit->comments()->count()}}</label></label>
+                        <label class="likes_count"> {{$twit->likes()->count()}}</label>
+                        <img src="{{URL::to('/')}}\img\for_interface\comments.png"
+                             style="width: 28px"
+                             class="likes_button">
+                        <label class="likes_count">{{$twit->comments()->count()}}</label></label>
 
-                                <img src="{{URL::to('/')}}\img\for_interface\retwit.png"
-                                       style="width: 28px"
-                                        class="likes_button">
-                                <label class="likes_count"> {{\App\Models\Twit::where('original_twit',$twit->id)->count()}}</label>
-
-                    </div>
-
+                        <img src="{{URL::to('/')}}\img\for_interface\retwit.png"
+                             style="width: 28px"
+                             class="likes_button">
+                        <label
+                            class="likes_count"> {{\App\Models\Twit::where('original_twit',$twit->id)->count()}}</label>
 
             </div>
 
+
         </div>
-        <div class="other">
-            <p class="checkbox_title"><input type="checkbox" id="checkbox" onclick="visiblePhotos(); " name="old_photo"
-                                             value="1" checked>Оставить старые фото
-                <label for="photos" class="custom-file-upload" id="photos_title" style="    display: none;
+
+    </div>
+    <div class="other">
+        <p class="checkbox_title"><input type="checkbox" id="checkbox" onclick="visiblePhotos(); " name="old_photo"
+                                         value="1" checked>Оставить старые фото
+            <label for="photos" class="custom-file-upload" id="photos_title" style="    display: none;
     width: 245px;
     margin-bottom: 6%;">
-                    выбрать фото
-                </label></p>
-            <input id="photos" accept="image/*" multiple name="photos[]" type="file"/>
-            <button type="submit" id="button">Обновить</button>
+                выбрать фото
+            </label></p>
+        <input id="photos" accept="image/*" multiple name="photos[]" type="file"/>
+        <button type="submit" id="button">Обновить</button>
 
-            </form>
+        </form>
 
-            <form action="javascript:history.back()"
-                  onclick="return confirm('Вы уверены, что хотите выйти? Данные не будут сохранены')">
-                <button type="submit">Назад</button>
-            </form>
-        </div>
+        <form action="javascript:history.back()"
+              onclick="return confirm('Вы уверены, что хотите выйти? Данные не будут сохранены')">
+            <button type="submit">Назад</button>
+        </form>
+    </div>
     </div>
     </div>
 

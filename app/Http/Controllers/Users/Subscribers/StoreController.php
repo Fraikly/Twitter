@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class StoreController extends Controller
 {
 
-public function __invoke(User $user)
-{
-    SubscriberSubscription::create([
-        'subscriber_id'=>Auth::user()->getAuthIdentifier(),
-        'subscription_id'=>$user->id
-    ]);
-    return redirect()->back();
-}
+    public function __invoke(User $user)
+    {
+        SubscriberSubscription::create([
+            'subscriber_id' => Auth::user()->getAuthIdentifier(),
+            'subscription_id' => $user->id
+        ]);
+        return redirect()->back();
+    }
 
 }

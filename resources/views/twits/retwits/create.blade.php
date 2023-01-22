@@ -91,7 +91,8 @@
 
                                 <input type="image" src="{{URL::to('/')}}\img\for_interface\retwit.png"
                                        style="width: 28px" alt="Submit" class="likes_button">
-                                <label class="likes_count"> {{\App\Models\Twit::where('original_twit',$twit->id)->count()}}</label>
+                                <label
+                                    class="likes_count"> {{\App\Models\Twit::where('original_twit',$twit->id)->count()}}</label>
 
                     </div>
                     <div id="show" class="centered_div">

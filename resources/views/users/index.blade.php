@@ -19,36 +19,38 @@
                 @foreach($users as $user)
                     <div class="profiles_info">
                         <a href="{{route('users.show', $user->id)}}"
-                         > <img src="{{asset('/storage/' .$user->picture)}}" class="profiles_photo">
-                        <p  class="profiles_name">{{ $user->login }} </a></p>
+                        > <img src="{{asset('/storage/' .$user->picture)}}" class="profiles_photo">
+                            <p class="profiles_name">{{ $user->login }} </a></p>
                         <label class="subscribers_info">Подписчики: {{$user->subscribers()->count()}}
-                        @cannot('view',$user)
-                            @if($subscriptions!=null)
-                        @if($subscriptions->find($user->id)===null)
-                            <form method="post"
-                                  onclick="return confirm('Вы хотите подписаться на {{$user->login}}?')"
-                                  style="position: relative"
-                                  action="{{route('subscribers.store',$user->id)}}"
-                            >
-                                @csrf
-                                <input type="image" src="img/for_interface/no_subscriber.png" class="subscribe_icon"
-                                       alt="Click">
-                            </form>
-                        @else
+                            @cannot('view',$user)
+                                @if($subscriptions!=null)
+                                    @if($subscriptions->find($user->id)===null)
+                                        <form method="post"
+                                              onclick="return confirm('Вы хотите подписаться на {{$user->login}}?')"
+                                              style="position: relative"
+                                              action="{{route('subscribers.store',$user->id)}}"
+                                        >
+                                            @csrf
+                                            <input type="image" src="img/for_interface/no_subscriber.png"
+                                                   class="subscribe_icon"
+                                                   alt="Click">
+                                        </form>
+                                    @else
 
-                            <form method="post"
-                                  onclick="return confirm('Вы хотите отписаться от {{$user->login}}?')"
-                                  style="position: relative"
-                                  action="{{route('subscribers.delete',$user->id)}}">
-                                @csrf
-                                @method('delete')
-                                <input type="image"  src="img/for_interface/subscriber.png" class="subscribe_icon"  alt="Submit">
-                            </form>
+                                        <form method="post"
+                                              onclick="return confirm('Вы хотите отписаться от {{$user->login}}?')"
+                                              style="position: relative"
+                                              action="{{route('subscribers.delete',$user->id)}}">
+                                            @csrf
+                                            @method('delete')
+                                            <input type="image" src="img/for_interface/subscriber.png"
+                                                   class="subscribe_icon" alt="Submit">
+                                        </form>
 
-                            @endif
-                            @endif
+                                    @endif
+                                @endif
                             @endcannot
-                            </label>
+                        </label>
                     </div>
 
                 @endforeach

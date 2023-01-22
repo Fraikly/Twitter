@@ -4,13 +4,9 @@ namespace App\Http\Controllers\Twits;
 
 use App\Http\Controllers\Controller;
 use  \App\Http\Requests\Twits\UpdateRequest;
-use App\Http\Resources\Twit\TwitResource;
 use App\Models\Image;
 use App\Models\Twit;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class UpdateController extends Controller
 {
@@ -19,7 +15,6 @@ class UpdateController extends Controller
     {
 
         $data = $request->validated();
-//    dd($data);
         $paths = [];
         if (!isset($data['old_photo'])) {
 

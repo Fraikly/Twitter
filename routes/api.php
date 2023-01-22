@@ -56,8 +56,8 @@ Route::group(['prefix'=>'/users'],function (){
         });
 
         Route::group(['prefix'=>'/subscribers'],function (){
-            Route::post('/subscribers',[SubscribersController::class,'index']);
-            Route::post('/subscribers/delete',[SubscribersController::class,'destroy']);
+            Route::post('',[SubscribersController::class,'index']);
+            Route::post('/delete',[SubscribersController::class,'destroy']);
         });
 
     });
