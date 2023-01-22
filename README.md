@@ -1,66 +1,52 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Сайт Twitter
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Название проекта:** приближенная функциональная копия сайта twitter
 
-## About Laravel
+**Разработчик:** Фролова Арина
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## **Содержание readme**
+-[До запуска](#До запуска)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-[Автоматическое заполнение бд](#Автоматическое заполнение бд)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+--[Фотографии](#Фотографии)
 
-## Learning Laravel
+--[Factory](#Factory)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-[Навигация по сайту](#Навигация по сайту)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## **Руководство пользователя**
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### **До запуска**
+После клонировани проекта на ваш компьютер для запуска сайта необходимо обновить composer. Введите в вашей консоли команду `composer update` и дождитесь полного завершения
 
-## Laravel Sponsors
+Далее вам необходимо создать в корневой папке проекта файл `.env`, пример которого есть в `.env.example`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Для создания всех необходимых таблиц в бд пропишите в консоле `php artisan migrate`
 
-### Premium Partners
+Для возможности загрузки и использования изображения пропишите в консоле `php artisan storage:link`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+**Сайт готов к запуску, пропишите в консоле `php artisan serve`**
 
-## Contributing
+### **Автоматическое заполнение бд**
+Если вы хотите, чтобы на вашем сайте уже были некоторые пользователи, твиты, лайки и прочее, используйте этот пункт как руководство
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### **Фотографии**
+С фотографиями создание займет чуть больше времени, но ваш сайт станет выглядеть живее. Для их использования перейдите в директроию `storage/app/publi`, 
+создайте две папки `photos`,где будут храниться фотографии из твитов и `icons`, с аватарками пользователей. Добавьте в эти директории любые фотографии
 
-## Code of Conduct
+**Обязательно поместите в `icons` любое изображение, назвав его `user.png`. Оно будет использоваться, как стандартное изображение**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### **Factory**
+Зайдите в файл `database/seeders/DatabaseSeeder.php`. Настроить создание объектов вы сможете, используя эти поля:
+```
+        $NumberOfUsers = 100; //кол-во пользователей
+        $NumberOfTwits = 300; //кол-во твитов
+        $NumberOfComments = 300; //кол-во комментариев
+        $NumberOfLikesForTwits = 10000; //кол-во лайков для твитов
+        $NumberOfLikesForComments = 5000; //кол-во лайков для комментариев
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+        $MaxNumberOfSubscribers = 50; // макс кол-во подписчиков
+        $MinNumberOfSubscribers = 0; // мин кол-во подписчиков
+```
+Затем введите в консоль команду `php artisan migrate --seed`
