@@ -12,7 +12,7 @@
                 @csrf
                 @method('patch')
                 <label class="settings">Имя профиля: </label>
-                <input type="text" value="Арина Фролова" name="login" style="
+                <input type="text" value="{{$user->login}}" name="login" style="
     color: black;
 ">
                 @error('login')

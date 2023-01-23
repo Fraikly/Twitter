@@ -1,6 +1,6 @@
 <div class="twit">
-    <div class="twit_info">
-        <a href="{{route('users.show',$twit->user_id)}}">
+
+
             @if($title!='Главная')
                 <img src="{{asset('/storage/' .$user->picture)}}"
                      class="twit_profile_photo"
@@ -10,34 +10,38 @@
                      class="twit_profile_photo"
                      alt="missing image">
             @endif
-            <label class="twit_header"> <label
-                    class="twit_name" style="cursor: pointer">
+                <div class="twit_info" style="display: contents">
+            <label class="twit_header">
+                <label class="twit_name" style="cursor: pointer">
                     @if($title!='Главная')
                         {{$user->login}}
                     @else
                         {{\App\Models\User::find($twit->user_id)->login}}
                     @endif
+                        @auth()
+                            @if($twit->user_id===\Illuminate\Support\Facades\Auth::user()->id)
+                                <div class="edit_twit_icons">
+                                    <a href="{{route('twits.edit',$twit->id)}}"> <img
+                                            src="{{URL::to('/')}}\img\for_interface\edit_twit.png"
+                                            width="28px" alt="missing image"></a>
+                                    </p>
+                                    <form method="post"
+                                          onclick="return confirm('Вы хотите удалить этот твит?')"
+                                          style="position: relative"
+                                          action="{{route('twits.delete',$twit->id)}}">
+                                        @csrf
+                                        @method('delete')
+                                        <input type="image" src="\img\for_interface\delete_twit.png"
+                                               alt="Submit"
+                                               style="width: 28px; box-shadow: none;background: none"
+                                               class="">
 
-                    @auth()
-                        @if($twit->user_id===\Illuminate\Support\Facades\Auth::user()->id)
-                            <div class="edit_twit_icons">
-                                <a href="{{route('twits.edit',$twit->id)}}"> <img
-                                        src="{{URL::to('/')}}\img\for_interface\edit_twit.png"
-                                        width="28px" alt="missing image"></a>
-                                </p>
-                                <form method="post"
-                                      onclick="return confirm('Вы хотите удалить этот твит?')"
-                                      style="position: relative"
-                                      action="{{route('twits.delete',$twit->id)}}">
-                                    @csrf
-                                    @method('delete')
-                                    <input type="image" src="\img\for_interface\delete_twit.png" alt="Submit"
-                                           style="width: 28px; box-shadow: none;background: none" class="">
+                                    </form>
+                                </div>
+                            @endif
+                        @endauth
 
-                                </form>
-                            </div>
-                        @endif
-                    @endauth
+
                 </label>
                 <label class="twit_date">
                     @if((date('Y-m-d')===date('Y-m-d',strtotime($twit->created_at))))
@@ -55,8 +59,8 @@
                         (ред.)
                     @endif
 
-                </label> </a>
-        </label>
+                </label>
+            </label>
     </div>
     <div class="twit_content">
         <p>в ответ <a
